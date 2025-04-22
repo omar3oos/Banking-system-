@@ -20,10 +20,12 @@ public class Customer extends User {
         }
     }
 
-    public void makeTransaction(Transaction transaction) {
-        // To be implemented: process transaction
-    }
+    public void makeTransaction(Bank bank, String type, double amount, Account source, Account destination) {
+        String transactionId = "TXN" + System.currentTimeMillis();
+        Transaction transaction = new Transaction(transactionId, type, amount, source, destination, "pending");
 
+        bank.processTransaction(transaction);
+    }
     @Override
     public boolean login(String username, String password) {
         return this.username.equals(username) && this.password.equals(password);

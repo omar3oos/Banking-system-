@@ -9,15 +9,17 @@ public class Admin extends Employee {
         this.adminPrivileges = adminPrivileges;
     }
 
-    public void createEmployee(Employee employee) {
-        // Add to Bank's user list
+
+    public void createEmployee(Bank bank, Employee employee) {
+        bank.createUser(employee);
+        System.out.println("Employee created: " + employee.name);
     }
 
     public void modifySystemSettings() {
-        // Placeholder for admin settings
+        System.out.println("System settings modified (placeholder).");
     }
 
     public void overrideTransactionLimits() {
-        // Admin-specific overrides
+        System.out.println("Transaction limits overridden (placeholder).");
     }
 }

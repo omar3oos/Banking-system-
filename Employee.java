@@ -12,13 +12,21 @@ public class Employee extends User {
         customer.viewAccounts();
     }
 
-    public Customer searchCustomer(String username) {
-        // Placeholder: actual search logic would go in Bank class
+    public Customer searchCustomer(Bank bank, String username) {
+        User user = bank.findUser(username);
+        if (user instanceof Customer) {
+            return (Customer) user;
+        }
         return null;
     }
-
-    public void generateReport() {
-        // Placeholder for report generation
+    public void generateReport(Bank bank) {
+        System.out.println("---- Customer Report ----");
+        for (User user : bank.getUsers()) {
+            if (user instanceof Customer customer) {
+                System.out.println("Customer: " + customer.name);
+                customer.viewAccounts();
+            }
+        }
     }
 
     @Override
